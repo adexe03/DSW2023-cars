@@ -1,0 +1,16 @@
+{
+    "name": "adexe/cars",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Adexe\\Cars\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Adexe Reyes",
+            "email": "adexe.reyes.cb@gmail.com"
+        }
+    ],
+    "require": {}
+}
