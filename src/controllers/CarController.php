@@ -1,34 +1,42 @@
 <?php
+
+namespace Adexe\Cars\Controllers;
+
+use Adexe\Cars\Models\Car;
+
 class CarController
 {
-  private $cars = [];
 
   public function __construct()
   {
-    // $this->cars[] = new Car("2453", "Toyota", "Supra", 2023, "white");
-    // $this->cars[] = new Car("4687", "Toyota", "AE86", 1998, "black");
-    // $this->cars[] = new Car("1231", "Nissan", "Silvia S15", 1999, "red");
-    $json = file_get_contents('../data/cars.json');
-    $carsJSON = json_decode($json);
-    foreach ($carsJSON as $carJSON) {
-      $this->cars[] = new Car($carJSON->id, $carJSON->make, $carJSON->model, $carJSON->year, $carJSON->color);
-    }
   }
 
   public function list()
   {
     // return all cars
-    $listCars = $this->cars;
+    $listCars = Car::getAll();
     require '../src/views/list.php';
   }
 
   public function show($id)
   {
     // return the car with this id
-    $cars = array_filter($this->cars, fn ($car) => $car->id == $id);
-    if (sizeof($cars) > 0) {
-      $car = array_pop($cars);
+    $car = Car::find($id);
+    if ($car) {
       require '../src/views/show.php';
     } else echo "Car not found";
+  }
+
+  public function delete($id)
+  {
+    Car::delete($id);
+    $this->list();
+  }
+
+  public function create()
+  {
+    // $car = new Car($id, $make, $model, $year, $color);
+    $car = new Car('1234ABCD', 'Toyota', 'Supra MK4', 1998, 'white');
+    Car::create($car);
   }
 }

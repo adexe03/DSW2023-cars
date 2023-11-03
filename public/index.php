@@ -1,6 +1,9 @@
 <?php
-require '../src/models/Car.php';
-require '../src/controllers/CarController.php';
+// require '../src/models/Car.php';
+// require '../src/controllers/CarController.php';
+require '../vendor/autoload.php';
+
+use Adexe\Cars\Controllers\CarController;
 ?>
 
 <!DOCTYPE html>
@@ -17,9 +20,17 @@ require '../src/controllers/CarController.php';
   <?php
   $controller = new CarController();
   if (isset($_GET['id'])) {
-    $controller->show($_GET['id']);
-  } else $controller->list();
-
+    $id = $_GET['id'];
+    if (isset($_GET['action'])) {
+      $action = $_GET['action'];
+      if ($action == 'delete') {
+        $controller->delete($id);
+      }
+    } else $controller->show($id);
+  } else {
+    $controller->create();
+    $controller->list();
+  }
   ?>
 </body>
 
