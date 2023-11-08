@@ -70,8 +70,9 @@ class Car
     // Convertir JSON data de un array a un string
     $jsonString = json_encode($data, JSON_PRETTY_PRINT);
     // Escribir en el fichero
-    $file = fopen(self::$dataFile, 'w');
-    fwrite($file, $jsonString);
-    fclose($file);
+    // $file = fopen(self::$dataFile, 'w');
+    // fwrite($file, $jsonString);
+    // fclose($file);
+    file_put_contents(self::$dataFile, $jsonString);
   }
 }

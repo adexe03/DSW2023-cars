@@ -1,12 +1,5 @@
 [
     {
-        "id": "1D4RE3GG1BC360136",
-        "make": "Isuzu",
-        "model": "i-Series",
-        "year": 2007,
-        "color": "Fuscia"
-    },
-    {
         "id": "WBA3R1C57FF377539",
         "make": "Ford",
         "model": "Econoline E350",
@@ -698,5 +691,12 @@
         "model": "I",
         "year": 2000,
         "color": "Violet"
+    },
+    {
+        "id": "123456789ABC",
+        "make": "Ford",
+        "model": "Fiesta",
+        "year": "2011",
+        "color": "#7ad63d"
     }
 ]
