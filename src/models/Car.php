@@ -65,6 +65,20 @@ class Car
     self::save($cars);
   }
 
+  public static function update($id, $data)
+  {
+    $cars = self::getAll();
+    foreach ($cars as $car) {
+      if ($car->id == $id) {
+        $car->make = $data['make'];
+        $car->model = $data['model'];
+        $car->year = $data['year'];
+        $car->color = $data['color'];
+      }
+    }
+    self::save($cars);
+  }
+
   public static function save($data)
   {
     // Convertir JSON data de un array a un string
